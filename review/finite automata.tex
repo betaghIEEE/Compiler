@@ -1,0 +1,162 @@
+ \section{Finite  Automata}
+`` A \textsl{recognizer} for a language is a program that takes as input a string $x$ and answers `yes' if $x$ is a sentence of the language and `no' otherwise.''  Non-deterministic finite automata has more than one transition out of a state on the same symbol.   A deterministic finite automata has only one state transition per symbol.  
+
+\textbf {\Large Non-deterministic Finite Automata}
+\begin{quote}
+A non-deterministic finite automata (NFA) is a mathematical model that consists of 
+\begin{enumerate}
+\item a set of states S
+\item a set of input symbol $\Sigma$ ( the input symbol alphabet)
+\item a transition function move that maps state-symbol pairs to sets of states
+\item a state $s_0$ that is distinguished as the start (or initial) state 
+\item a set of states F distinguished as accepting (or final) states
+\end{enumerate}
+\end{quote}
+\cite {ullman}
+``An NFA accepts an input string $x$ if and only if there is some path in the transition graph from the start  state to some accepting state, such that the edge labels along this path spell out $x$. ''
+
+NFA is typically represent pictorially by a transition graph.  A transition graph is a graph where the states are the nodes and labeled edges represent the transition functions.  NFA may include edges represented by $\epsilon$.  
+
+A NFA may also be represented by a transition table.  A transition table consists of:
+\begin{itemize}
+\item a row for each state
+\item a column for each symbol
+\item An entry in each cell representing the states that can be reached by the row's state and column's input symbol
+\end{itemize}
+
+\textbf {\Large Deterministic Finite Automata}
+\begin{quote}
+A deterministic finite automaton (DFA) is a special case of NFA in which 
+\begin{enumerate}
+\item no state has an $\epsilon$-transition
+\item for each state $s$ and input symbol $a$, there is at most one edge labeled $a$ leaving $s$
+\end{enumerate}
+\end{quote}
+
+\textbf{\Large Example: Minimal DFA}  $NFA\to DFA$ $\epsilon$ closure / composite states
+
+``The DFA uses its state to keep track of all possible states the NFA can be in after reading each input symbol.''  
+
+\textbf {Algorithm} Subset construction: Constructing a DFA from an NFA
+
+\textsl{Input} An NFA $N$
+
+\textsl{Output:} A DFA $D$ accepting the same language
+
+\textsl{Goal:} ``Each DFA state is a set of NFA states and we construct $D$-tran so that $D$ will simulate in parallel all possible moves N can make on a given input string.''  
+
+\textsl{Method.} Construct a transition table $D$-tran for $D$.  Apply $\epsilon$ closure and move methods, 
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|}
+$\epsilon$-closure(s) & Set of NFA states reachable from NFA state $s$ on $\epsilon$-transitions alone \\
+$\epsilon$ -closure(T) & Set of NFA states reachable from some NFA state $s\in T$ on $\epsilon$-transitions alone \\
+$move(T,a)$ & Set of NFA states to which there is a transition on input symbol $a$ from some NFA state $s\inT$
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+{\large Notes on subset construction}
+\begin{enumerate}
+\item $\epsilon$-closure ($s_0$) shows a pseudo-state composed of the states $s\in T$ reachable from $s_0$.  For symbol $a$, these states include $\epsilon closure(move(s_0,a))$.
+\item
+Each state of $D$ corresponds to a set of NFA states that $N$ could be after reading a sequence of of input symbols including all possible $\epsilon$-transitions before or after the symbols are read.  
+\item 
+Starting state of $D$ is $\epsilon closure (s_0)$.  
+\item
+An accepting state in $D$ is defined as the state  is a set of NFA states containing at least one accepting state of $N$.  
+\item
+A simple algorithm to compute $\epsilon$ - closure (T) uses a stack to hold states whose states whose edges have not been checked for $\epsilon$ labeled transitions.  
+\end{enumerate}
+
+
+\section {Example: Lexical Analysis Through Semantics}
+
+Note that whole point of the lexical analyzer in this case is to identify tokens.   The calling program reads in a buffer of characters (lines of 80 characters or less).  This string is passed to the lexical analyzer.  As a debugging tool, each string will be printed when processed.  Also comments as to success of failure shall also be printed.  
+
+It has been alluded that the syntax analyzer will actually be doing the calling, trying to acquire tokens.  On feature that appears to be necessary is a common symbol table.  Whether this symbol table is global, is simply referenced by both is something to be tested.   There is a suggestion that makes sense.  Pre-load the symbol table with all reserved words and symbols.  All reserved words have a token type identical to its index in the symbol table.  The suggested record structure is as follows:
+\begin{itemize}
+\item Name string
+\item Location 
+\item Token Type 
+\item Index of Token
+\item Constants
+\item Integer
+\end{itemize}
+\textbf {\Large Special Suggestions}
+\begin{enumerate}
+\item Operators, special symbols, and spaces are delimiters.  How the delimiter is determined is immaterial.  What matters is that when one of these delimiters is encountered, the token acquisition stops.  
+\item Generate Selection Sets for the grammar;
+\item You are to write a phased implementation of a compiler to translate a program written in the language described above into an object language to be defined at a later date.  Your compiler will consist of a lexical analyzer (or scanner), syntax analyzer, semantic analyzer, and code generator.
+\end{enumerate}
+
+
+
+Reserved Words/Symbols:
+\begin{enumerate}
+\item program
+\item array
+\item integer
+\item read
+\item write
+\item rdln
+\item wrln
+\item when
+\item until
+\item from
+\item from
+\item ..
+\item delimiter symbols
+\begin{itemize}
+\item eof
+\item \left[
+\item \}
+\item [
+\item ]
+\item ;
+\item ,
+\item (
+\item )
+\item :=
+\item $<$
+\item $>$
+\item =
+\item $<=$
+\item $>=$
+\item $<>$
+\item $+$
+\item $-$
+\item $*$
+\item /
+\item :
+\end{itemize}
+\item and
+\item or
+\item mod
+\end{enumerate}
+
+
+Syntax is case insensitive.  
+
+
+\textbf{\Large Tokens of the Language}
+Tokens of the language can be either a space ($S_0$), special symbol ($S_s$), identifier, numerical constant, or a reserved word.   Identifiers and reserved words can be considered to almost the same except, the reserved words are preloaded into the symbol table.  
+\begin{itemize}\item $S_d = S_s \bigcup S_0$
+\item $u_c = \{A,...,Z\}$
+\item $l_c = \{a, ..., z \}$
+\item $n_0 = \{0,...,9\}$\end{itemize}
+
+\textbf{\Large A cute token analyzer} 
+\\
+\begin{itemize}\item input: String s integer position
+\item output
+	Token identifier
+\item Support variables: character c, integer tokenid, integer index\end{itemize}
+
+
+
+\begin{thebibliography}{99}
+\bibitem {ullman} Jeffrey D. Ulman, Ravi Sethi, Alfred V. Aho \textsl{Compilers: Principles, Techniques and Tools} copywrite 1986 by Bell Telephone Laboratories, Incorporated
+\end {thebibliography}
