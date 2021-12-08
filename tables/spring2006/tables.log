@@ -1,0 +1,296 @@
+This is pdfeTeXk, Version 3.141592-1.11a-2.1 (Web2C 7.5.2) (format=pdflatex 2005.12.7)  5 MAY 2006 16:30
+entering extended mode
+\write18 enabled.
+ %&-line parsing enabled.
+ (/usr/local/teTeX/share/texmf.tetex/web2c/cp8bit.tcx)
+**tables.tex
+(./tables.tex{/usr/local/teTeX/share/texmf.local/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count90
+))
+\Gin@req@height=\dimen107
+\Gin@req@width=\dimen108
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2001/02/04 v1.1 Conversion with epstopdf on the fly (HO)
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/algorithms/algorithm.sty
+Package: algorithm 
+
+Document Style `algorithm' - floating environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count91
+\float@exts=\toks17
+\float@box=\box26
+\@float@everytoks=\toks18
+\@floatcapt=\box27
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks19
+\c@algorithm=\count92
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2005/07/05
+
+Document Style `algorithmic' - environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/tools/calc.sty
+Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count93
+\calc@Bcount=\count94
+\calc@Adimen=\dimen109
+\calc@Bdimen=\dimen110
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 59.
+LaTeX Info: Redefining \addtolength on input line 60.
+\calc@denominator=\count95
+)
+\c@ALC@line=\count96
+\c@ALC@rem=\count97
+\c@ALC@depth=\count98
+\ALC@tlm=\skip45
+\algorithmicindent=\skip46
+) (./tables.aux
+
+LaTeX Warning: Label `alg:NU' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `alg:closure' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+)
+\openout1 = `tables.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+-------------------- Geometry parameters
+paper: letterpaper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 92.14519pt, 0.7\paperwidth , 92.14519pt (default)
+v-parts: 95.39737pt, 0.7\paperheight , 143.09605pt (default)
+hmarginratio: 1:1
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  430.00462pt
+\textheight 556.47656pt
+\oddsidemargin  19.8752pt
+\evensidemargin 19.8752pt
+\topmargin  -13.87262pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 59.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+ (/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count99
+\scratchcounter=\count100
+\scratchtoks=\toks20
+\scratchdimen=\dimen111
+\scratchskip=\skip47
+\scratchmuskip=\muskip10
+\scratchbox=\box28
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen112
+\minusone=\count101
+\thousandpoint=\dimen113
+\emptytoks=\toks21
+\nextbox=\box29
+\nextdepth=\dimen114
+\everyline=\toks22
+\!!counta=\count102
+\!!countb=\count103
+\recursecounter=\count104
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count105
+\nofMParguments=\count106
+\everyMPtoPDFconversion=\toks23
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+<actionTable.pdf, id=1, 568.1225pt x 411.5375pt>
+File: actionTable.pdf Graphic file (type pdf)
+ <use actionTable.pdf> [1
+
+{/usr/local/teTeX/share/texmf.local/fonts/map/pdftex/updmap/pdftex.map}]
+<gotoTable.pdf, id=18, 426.59375pt x 447.6725pt>
+File: gotoTable.pdf Graphic file (type pdf)
+ <use gotoTable.pdf>
+<reductionTable.pdf, id=19, 447.6725pt x 264.99pt>
+File: reductionTable.pdf Graphic file (type pdf)
+ <use reductionTable.pdf>
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+
+[2 <./actionTable.pdf>] [3 <./gotoTable.pdf> <./reductionTable.pdf>] [4]
+Missing character: There is no ^^d0 in font cmr8!
+Missing character: There is no ^^d0 in font cmr8!
+
+[5] [6]
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+ [7] [8] [9]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 265.
+
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 265.
+Missing character: There is no ^^d5 in font cmr10!
+Missing character: There is no ^^d5 in font cmr10!
+ [10] [11]
+
+LaTeX Warning: Float too large for page by 9.45634pt on input line 421.
+
+[12] [13] [14] (./tables.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1869 strings out of 95314
+ 24202 string characters out of 1187311
+ 2068774 words of memory out of 4524267
+ 4929 multiletter control sequences out of 10000+50000
+ 11109 words of font info for 42 fonts, out of 1000000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 25i,10n,24p,814b,710s stack positions out of 5000i,500n,6000p,200000b,40000s
+ 129 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 16 words of extra memory for PDF output out of 65536
+{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/f7b6d320.enc}</usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmsl10.pfb>{/usr/local/teTeX/share/t
+exmf.tetex/dvips/tetex/bbad153f.enc}</usr/local/teTeX/share/texmf.tetex/fonts/t
+ype1/bluesky/cm/cmsy8.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/blues
+ky/cm/cmsy10.pfb>{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/aae443f0.enc}<
+/usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local
+/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr8.pfb></usr/local/teTeX/shar
+e/texmf.tetex/fonts/type1/bluesky/cm/cmbx10.pfb></usr/local/teTeX/share/texmf.t
+etex/fonts/type1/bluesky/cm/cmmi10.pfb></usr/local/teTeX/share/texmf.tetex/font
+s/type1/bluesky/cm/cmbx12.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/b
+luesky/cm/cmr10.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/
+cmr12.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr17.pfb>
+
+Output written on tables.pdf (14 pages, 176888 bytes).
