@@ -1,0 +1,80 @@
+There was a grammar change made on the grammar.  Watch out for this an update the syntax analysis. 
+There is direct recursion on both the C and E productions that must be removed.   There was a question as to what to do with the E production.  The question was described as question of semantics and was postponed for that discussion.  
+
+
+An example of left recursion is provided with production $C\to (E_L)(E_L) < | C\  C\ and$.  There is obvious left recursion.  There is a non-left-recursion option that used to define $C$:
+$C \to (E_L) (E_L) < C'$
+and a the left recursion options which fill in $C'$:  
+$C' \to C\ and\ C' | \epsilon$  This opens the need to work the first, follow and selection sets for these values:
+
+ 
+ 
+  
+ Viable prefix error  - horrid death problem
+ 
+ $LL(1)$ viable prefix Error recovery is an issue.  If there is a syntax error, the compiler simply dies and will not catch any other mistakes.  The premise of viable prefix is establish the sections of the code that were considered to be correct prior to the error.  After that point identify a position which the compiler can continue with some kind of error recovery (not error correction).  .  
+ 
+ Scan set are needed to provide viable prefixes and is associated with the syntax analyzer.  What a scan set does provides a place where the lexical analyzer can pushed to, and from that point identify to section to be good, and continue compilation.  
+ 
+ scan set to deal with segments that could generate errors 
+ 
+ \textbf {Example: $S_L\to S | S_L$}
+ In the case of this production, grammar specifies the semicolon and end bracket as valid end points.  Thus after that point, compilation can begin again and everything would be okay.  In developing these scan sets, we look at each of the productions,  look at the point that can be scanned to, find its end , and restart compilation.  The $;$ ($a_{14}$) and $\}$ ($a_13$)  come from the production of 
+ \\
+ $S\to a_{12} S_L a_{13} a_7 C | a_{12} S_L a_{13} a_8 C | $ \\
+ $S \to  a_{18} I_L a_{19}a_{18} E_L a_{19} a_{20} | a_{12} S_L a_{13}  i_d a_{9} a_{14} E a_{10} E a_{15} |$  \\
+ $S \to  a_{12} I_L a_{13} a_3 | a_{18} I_L a_{19} a_4 | a_5 | a_6 $
+ 
+ In reality, a scan set could nothing more than ; \} , and be okay.  Similar things need to be done for declarations.  For example, $S_L$ and and $S$.  An example of this would a recursive decent routine for $S_L$
+
+ 
+ function $S_L$: boolean
+ 	if $S$ then 
+		if nt = `;' then 
+			if $S_L$ then $S_L$ := true
+			else
+				$S_L$ := true
+				numbererrors := numbererrors 
+				scan ( \} ; )
+		else
+			$S$ := true 
+			error 
+			numbererror := 
+			scan
+	else
+		$S_L$ := true
+		
+Note that it is probable that if an error is to be had, it will be had a the semicolon before the else. Thus the else could be a no operation.	
+
+Note that these operations could also handled on the declarations such as $D$, $D_1$ and $D_2$.  $D$ and $D_1$ seem to be the places to handle scan sets for the declarations.  Scan sets can be useful in expressions, but is difficult to implement.    Preferably, the scan sets are to be used at state or declaration levels.  
+
+TI 22m
+
+
+
+Catch the scan set at statement level
+
+\textbf {Semantic analysis}
+Byte code / Quads are machine independent representation of a language.   An example of a quad type language is Sun's Java Byte code.  Each quad has 4 parts to it.  Operations, 2 operands, and Destination/ Result of quad operation.  
+
+Operations are equivalent to language constructs such as I/O, ....
+
+Example of quad conversion on simple arithmetic functions.  
+Note that at line 12, a human should notice an optimization to be had in load directly the result into $x$.
+
+This quad language allows the constructs of a language to captured in a machine independent and concise way.
+
+\textbf{Another example} \\
+if $a < b$ then \\
+max := a \\
+else \\
+max := b
+
+
+A quad table is nothing more than a 2-D array of symbolic information.    These symbols can be represented as integers.  The operators themselves do not come from the symbol table.  However, the operands such as identifiers and constants do.  Jumps references are to rows in the table.   A value has to be made available for true or false.  
+
+It is recommended that we use a 2-D integer array to represent the ``Semantic routines'' and that we have a routine to print out the semantic / quad tables.   It is also recommended that we have a quad  generation routine.  Temporary variables DO NOT go into the symbol table.  Quad Examples:  arithmetic language.  Consider using negative integers for the temporary variables.
+				
+			
+What is done is an indicator of where a semantic action.   Next the semantic action is examined.  Any time an identifier or constant is identifier is identified, it needs to be pushed to the semantic stack.  
+			

@@ -1,0 +1,262 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{listings}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Parser Exercise Notes}
+\author{Daniel Beatty}
+%\date{}                                           % Activate to display a given date or no date
+
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\lstset{language=Pascal, numbers=left}
+
+\[ B \to B p_{1} |
+  \cdots  |
+   B p_{m} |
+    p_{m+1} |
+     \cdots |
+      p_{m+n} \]
+Replace the rule above with 
+\[  B \to p_m B' | \cdots | p_{m+n} B ' \]
+\[ B ' \to p_1 B ' | \cdots | p_m B' |  \epsilon \] 
+
+
+\begin{eqnarray*}
+ S \to S \textsl{;} S | 
+\{ S \} \textsl{ when } C \textsl{ else }  \{ S\} |
+ \{S \} \textsl{ when } C | 
+ \{ S \} \hat{ } E |
+  := I_D E \\
+  \hline
+  S \to  \textsl{;} S' \\
+  S' \to  
+\{ S \} \textsl{ when } C \textsl{ else }  \{ S\} |
+ \{S \} \textsl{ when } C | 
+ \{ S \} \hat{ } E |
+  := I_D E \\
+  \hline
+\end{eqnarray*}
+
+
+   
+   Left Factoring
+\begin{eqnarray*}
+ S \to  \textsl{;} S'  \\
+  S' \to  
+\{ S \} \textsl{ when } C \textsl{ else }  \{ S\} |
+ \{S \} \textsl{ when } C | 
+ \{ S \} \hat{ } E |
+  := I_D E \\
+  \hline
+ S' \to \{ S'' |
+  := I_D E \\
+  S'' \to   
+S \} \textsl{ when } C \textsl{ else }  \{ S\} |
+S \} \textsl{ when } C | 
+S \} \hat{ } E  \\
+\hline
+S'' \to   S S''' | \epsilon \\
+S''' \to 
+\} \textsl{ when } C \textsl{ else }  \{ S\} |
+ \} \textsl{ when } C | 
+  \} \hat{ } E \\
+  \hline
+  S ''' \to \} S^4 \\
+  S^4 \to 
+ \textsl{ when } C \textsl{ else }  \{ S\} |
+ \textsl{ when } C | 
+ \hat{ } E 
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+\textsl{ Sublist } \to E | E, \textsl{ Sublist } \\
+\hline
+\textsl{Left Factor} \\
+\textsl{ Sublist } \to E \textsl{ Sublist }' \\
+\textsl{ Sublist }' \to \textsl{ Sublist } | \epsilon 
+\end{eqnarray*}
+
+
+\textbf{Selection Sets}
+\[
+\left(
+\begin{array}{l|l}
+\textbf{Production} & \textbf{First} \\
+P \to \textsl{prog} (I_L ) D_1  \{ S \} \textsl{-}> (I_L) \\
+\hline
+D_1 \to I_L : D  &	\textsl{id}	\\
+\to \epsilon   &	\\
+\hline 
+D \to \textsl{ array } [ \textsl{ cons }  D_2 ]; D_1   \\
+\to \textsl{ integer }; D_1    & \textsl{integer} 	\\
+\hline
+D_2 \to , \textsl{ cons } D_2   &	, \\
+\to \epsilon   &	\\
+\hline
+I_L \to I_D I_{L_1}     & \textsl{id}	\\
+\hline
+I_{L_1} \to , I_L | \epsilon   & ,	\\
+\hline
+I_D \to id  I'_D   & id	\\
+\hline
+I'_D \to [\textsl{ Sublist }  ]   & [	\\
+\to epsilon   &	\\
+\hline
+E \to + E\textsl{ } E   &	+	\\
+\to - E\textsl{ } E   & -	\\
+\to * E\textsl{ } E   & *	\\
+\to \textsl{/}  E\textsl{ } E   & /	\\
+\to \textsl{ mod } E\textsl{ } E   &	\textsl{mod} 	\\
+\to I_D   & \textsl{id}	\\
+\to \textsl{ cons }   & \textsl{ cons }	\\
+\hline
+\textsl{Sublist} \to E \textsl{ Sublist}' &  *, +, -, /, \textsl{ cons }, \textsl{ mod }, \textsl{ id } \\
+\hline
+\textsl{Sublist}'  \to , \textsl{ Sublist}	&	, \textsl{Sublist}	\\
+	\to \epsilon	&	\\
+\hline 
+S \to \textsl{:=} \textsl{id} E ; S   & \textsl{:=}	\\
+\to \{ S \} S^3   &  \{ 	\\
+\to \epsilon 	&	\\
+\hline
+S' \to \textsl{ else } \{ S \} ; S   &	\textsl{else} \\
+\to ; S	&	;	\\
+\hline
+S'' \to C ; S   	& <, <=, >, >= , \textsl{ and }, \textsl{ or }, \textsl{ not }, \textsl{ eq }, \textsl{ neq}   \\
+\to E ; S   		& *, +, -, /, \textsl{ cons }, \textsl{ mod }, \textsl{ id  } \\
+\hline
+S^3 \to \textsl{ when } C S'   & \textsl{ when }	\\
+\hat{ } \textsl{ when } S''   & \hat{ } 	\\
+ \hline 
+ C \to < E \textsl{ } E   & <	\\
+\to > E \textsl{ } E   & >	\\
+\to \textsl{ eq } E \textsl{ } E   & \textsl{eq}	\\
+\to <= E \textsl{ } E   & <=	\\
+\to >= E \textsl{ } E   & >=	\\
+\to \textsl{ neq } E \textsl{ } E   & \textsl{neq}	\\
+\to \textsl{ and } C \textsl{ } C 	  & \textsl{and}	\\
+\to \textsl{ or } C \textsl{ } C   & \textsl{or} \\
+\to \textsl{ not } E    &	\textsl{not}	
+\end{array}
+\right)
+\]
+
+The follow sets can be written as the following set equations:
+\begin{eqnarray*}
+P = \$  \\
+D_1 \underline {\cup} D \\
+D_2 = ] \\
+D = \cup D_1 \\
+I_L = : \\
+I_{L_1} = I_L \\
+I_D = , \cup I_L  \cup E \\
+I'_D = I_D \\
+E = \textsl{first}(E) \cup ; \cup \textsl{Sublist} \cup C \\
+C = ; \textsl{ else } \cup \textsl{ first }(C) \\
+S = \} \cup S' \cup S'' \\
+S' = S^3 \\
+S'' = S^3 \\
+S^3 \underline{\cup} S  \\
+\textsl{Sublist} = ] \} \cup \textsl{Sublist}' \\
+\textsl{Sublist}' = \textsl{Sublist}\\
+\end{eqnarray*}
+
+
+
+\textbf{Selection Sets}
+\[
+\left(
+\begin{array}{l|l|l}
+\textbf{Production} & \textbf{First} & \textbf{Follow} \\
+P \to \textsl{prog} (I_L ) D_1  \{ S \} \textsl{-}> (I_L) & \textsl{prog} & \$ \\
+\hline
+D_1 \to I_L : D  &	\textsl{id}	& \{	\\
+\to \epsilon   &	&	\\
+\hline 
+D \to \textsl{ array } [ \textsl{ cons } , D_2 ]; D_1   &	\textsl{array} & \{	\\
+\to \textsl{ integer }; D_1    & \textsl{integer} 	&	\\
+\hline
+D_2 \to , \textsl{ cons } D_2   &	, & ]	\\
+\to \epsilon   &	&	\\
+\hline
+I_L \to I_D I_{L_1}     & \textsl{id}	& : , )	\\
+\hline
+I_{L_1} \to , I_L | \epsilon   & ,	& :, )	\\
+\hline
+I_D \to id  I'_D   & id	& , )	: \\
+\hline
+I'_D \to [\textsl{ Sublist }  ]   & [	& , ):	\\
+\to epsilon   &	&	\\
+\hline
+E \to + E\textsl{ } E   &	+	& ; ,+ ,-, *, /	\\
+\to - E\textsl{ } E   & -	& \textsl{mod }, \textsl{ id } 	\\
+\to * E\textsl{ } E   & *	& \textsl{ else }, < ,>	\\
+\to \textsl{/}  E\textsl{ } E   & /	& <=, >=, 	\\
+\to \textsl{ mod } E\textsl{ } E   &	\textsl{mod} 	& \textsl{ eq } , \textsl{ neq }, 	\\
+\to I_D   & \textsl{id}	& \textsl{ and }, \textsl{ or } , \textsl{ not }	\\
+\to \textsl{ cons }   & \textsl{ cons }	& ] \textsl {','}	\\
+\hline
+\textsl{Sublist} \to E \textsl{ Sublist}' &  *, +, -, /, \textsl{ cons }, \textsl{ mod }, \textsl{ id } &]	\\
+\hline
+\textsl{Sublist}'  \to , \textsl{ Sublist}	&	, \textsl{Sublist}	& ]	\\
+	\to \epsilon	&	&	\\
+\hline 
+S \to \textsl{:=} \textsl{id} E ; S   & \textsl{:=}	& \}	\\
+\to \{ S \} S^3   &  \{ 	&	\\
+\to \epsilon 	&	&	\\
+\hline
+S' \to \textsl{ else } \{ S \} ; S   &	\textsl{else} & \} 	\\
+\to ; S	&	;	&	\\
+\hline
+S'' \to C ; S   	& <, <=, >, >= , \textsl{ and }, \textsl{ or }, \textsl{ not }, \textsl{ eq }, \textsl{ neq}   	& \}	\\
+\to E ; S   		& *, +, -, /, \textsl{ cons }, \textsl{ mod }, \textsl{ id }	&	\\
+\hline
+S^3 \to \textsl{ when } C S'   & \textsl{ when }	&  \}	\\
+\hat{ } \textsl{ when } S''   & \hat{ } 	&	\\
+ \hline 
+ C \to < E \textsl{ } E   & <	& ; \textsl{ else }	\\
+\to > E \textsl{ } E   & >	& <, >, \textsl{ eq }, \textsl{ neq }	\\
+\to \textsl{ eq } E \textsl{ } E   & \textsl{eq}	& <=, >=, \textsl{and}	\\
+\to <= E \textsl{ } E   & <=	& \textsl{not }, \textsl{or}	\\
+\to >= E \textsl{ } E   & >=	&	\\ 
+\to \textsl{ neq } E \textsl{ } E   & \textsl{neq}		&	\\
+\to \textsl{ and } C \textsl{ } C 	  & \textsl{and}	&	\\
+\to \textsl{ or } C \textsl{ } C   & \textsl{or}	&	\\
+\to \textsl{ not } E    &	\textsl{not}		&	
+\end{array}
+\right)
+\]
+
+
+Problems $I'_L , S^3, $ The constants and ``var'' have issues 
+
+Error Types:  
+\begin{lstlisting}
++ x 
+\end{lstlisting}
+This line will be a syntax error for getting to the end of the program in the middle of a non-final production.  
+
+LL(1) compiler types  are left to right input (scan), left most derivation and the one indicates a one symbol look ahead.    In such a compiler, an error can leave the compiler in a dead state.   Error recovery is an issue for all compilers, but is peculiar for LL(1). 
+
+Error recovery for multiple errors, one error does not prevent the compiler from discovering the rest of the errors.  A scan set is important to bring the compiler to determine which symbol is the start to the next stable location in the program.  The follow set yields values for the scan set.   In the case of the scan set, the tokenizer is advanced to a member of the scan set.   On the scan set element in the tokenizer, the syntax analyzer is reset to continue in the productions.   
+
+In the case of errors in syntax analysis, the processing does allow semantic analysis to commence.     
+
+Unfortunately, the scan set / error recover method can be costly.  Usually compilers of today report the first error of a single line statement.  Compound statements may allow for the error be found within the statement.  
+
+
+   
+   
+
+\end{document}   
