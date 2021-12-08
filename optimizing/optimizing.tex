@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\title{Notes on Compiler Optimizations}
+\author{Dan Beatty}
+\begin{document}
+\maketitle
+
+Basic Blocks in the Quad Table:
+
+p := 1 
+for i:= 1 to 10 do 
+\hspace{0.5 cm} $p:= i \ast p$
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+$L \to 11 $& := & 1 & & p \\
+12 & := & 1 & & i \\
+$L \to 13$ & $\le$ & i & 1 & t1 \\
+14 & jfalse & t1 & & block \\
+$L \to 15$ & $\ast$ & i & p & p \\
+16 & + & i & 1 & i \\
+17 & jmp & & & t3 \\
+$L \to 18$ &  & & 
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+There are concepts of leaders for basic blocks. 
+
+In the basic blocks, we are to try to use local block for usage optimization.  This is useful for going from basic block to basic block.  This produces a large amount of information to deal with unreachable code.  
+
+Basic Block 
+\begin{enumerate}
+\item 
+\end{enumerate}
+Given expression:
+\[X := ((Y \ast 4 ) + (X+3)) / (4 \ast 2 ) +3 \]
+
+Check out the quads for this expression.
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+10 & * & y & 4 & t1 \\
+11 & + & X & 3 & t2\\
+12 & + & t1 & t2 & t3 \\
+13 & $\ast$ & 4 & Z & t4 \\
+14 & / & t3 & t4 & t5 \\
+15 & + & t5 & 3 & t6 \\
+16 & := & t6 & & X 
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+Op code R
+A  R, mem
+AR R1, R2
+
+L 1, Y
+M	1, =F'4'  // full word `4'
+ST	1, t1
+L	1, X
+A	1, =F'3'
+ST	1, t2
+L	1, t1
+A	1, t2
+ST	1, t3
+L	1, =F'4'
+M 	1, Z
+ST	1, t4
+L	1, t3
+D	1, t3
+ST	1, t5
+L	1, t5
+A	1, =F`3'
+ST	1, t6
+L	1, t6
+ST	1, X
+
+Assumption, register is empty on leaving the quad.   ?  .  There is apparently 20 quads for 6 quads.  This amounts to about 3 instructions per quad.  The idea optimization is use a large number of registers to reduce loads and stores.  
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+$L \to 11 $& := & 1 & & p \\
+12 & := & 1 & & i \\
+$L \to 13$ & $\le$ & i & 1 & t1 \\
+14 & jfalse & t1 & & block \\
+$L \to 15$ & $\ast$ & i & p & p \\
+16 & + & i & 1 & i \\
+17 & jmp & & & t3 \\
+$L \to 18$ &  & & 
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+Memory allocation table algorithm found in email.
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+ID & L/NU & Loc - R/M \\
+X & A, D 2 & M \\
+Y & A 1A& M \\
+Z & A 4 &  M  \\
+t1 X & D 3 D 3 D & 1 \\
+t2 & D  3 D 3  D & 2 \\
+t3 & D 5 D 5 D& 1 \\
+t4 & D 5 D 5 D& 2  \\
+t5 & D 6 D  6 D & 1 \\
+t6 & D 7 D 7 &  1 \\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+OP B C A
+
+t1 is in register 1.  
+
+
+
+Temporary memory may exist only exist in registers.  However, memory address can exist in memory or registers.  There is also a need for a register table, which is specific for the processor.   There are also Live Next Uses to apply to operand fields and result fields. Watch out for the Live Next Use steps in step 3 of algorithm.  Case of Binary arithmetic and assignment quads.    There is a get register function that checks if variables are in a register.  
+
+Note look out for indenting on emailed algorithm.  Follow procedure 
+
+
+The op code generated is:
+L	1, Y
+M	1, = F'4'
+L	2, X
+A	2, =F'3'
+AR	1,2
+L	2, =F'4'
+M	2, Z
+DR	1,2
+A	1, =F'3'
+ST	1, X
+
+This is a significant optimization.  
+
+X := (X+Y) / (X*Y)
+
+\begin{table}[htdp]\caption{default}\begin{center}\begin{tabular}{|c|c|c|c|c|}
+1 & + & X & Y & T1 \\
+2 & * & X & Y & T2 \\
+3 & / & T1 & T2 & T3 \\
+4 & := & T3 &  & X \\\end{tabular}\end{center}\label{default}\end{table}%
+
+L	1,X
+A	1,Y
+ST	1,T1
+L	1,X
+M	1, Y
+ST	1, T2
+L	1,T1
+
+
+Needed for this algorithm is a table for identifiers, Live Next Use, and LOZ .  
+
+What need also is a Reg  and R section to identify the registers to be used.  
+
+Watch out for this optimization as done in Cooke's notes.  
+
+\section { 360/ 370 Like Architecture }
+Several architectures require a priori knowledge on integers and arrays.  Byte addressable machine.  Bytes for an integer.  Integer becomes a multiplier for arrays.  Does not effect the addressing, but does effect the memory allocation.  If there is a reference to a(i) in the main program, then the base of a, the index of ``a'' and the multiply by offset.  
+
+In two dimensions, there are a[1..3, 1..3] which can lead to row major order.  by definition base(a) + ((i-1) * offset ) + (j-1) *4 .  
+
+
+Watch out for invariant code analysis and common subexpression computation, and induction variable analysis.  
+
+Claim:  A good optimization compiler will write code near perfect code, and makes the work for a good assembly programmer very hard.  
+
+ \end{document} 
