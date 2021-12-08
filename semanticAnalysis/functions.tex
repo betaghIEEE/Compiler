@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Notes on Functions}
+\author{Dan Beatty}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+
+
+Functions in procedural languages have the following properties at definition
+\begin{itemize}
+\item Location of the code
+\item Return value
+\item Parameters (number and types of parameters).
+\item Activation Records have
+\begin{itemize}
+\item Pass by reference or value (pass by value in this case)
+\item Pass by value requires memory allocation at function activation time. 
+\item the activation record
+\item the call by value information 
+\item  return location get placed on the stack
+\item All local variable to the calling scope
+\end{itemize}
+\item Any calls to the function must include the activation record and information contained with in. 
+\item Activation records are activated (pushed) and deactivated (popped).   
+\end{itemize}
+
+Functions cause the quad table to have 2 more entries.  
+\begin{itemize}
+\item where does it begin
+\item Active status 
+\end{itemize}
+
+\newpage
+Assumptions on functions
+\begin{enumerate}
+\item One function active at a time (disallowing a function calling another)
+\item Nesting of function is not allowed either. 
+\item All function variable references will be local to the function.  (no globals)
+\item No local variables other than the parameters themselves.  
+\end{enumerate}
+
+
+
+ 
+ \begin{table}[htdp]
+\caption{The production for a function will need to have the following}
+\begin{center}
+\begin{tabular}{l}
+FUNC $\to$ function id (params) \{ S \} \\
+\hline
+PARAMS  $\to$  id P1 \\
+ P1 $\to$ , id P1  | $\epsilon$ \\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+ \begin{table}[htdp]
+\caption{In fix production handling function}
+\begin{center}
+\begin{tabular}{l}
+F $\to$ id $|$ cons $|$ ( E )  $|$ func (args)  \\
+S $\to $ $|$ func := E $|$   
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\textbf{Semantic Actions }
+ \begin{table}[htdp]
+\begin{center}
+\begin{tabular}{l|ll}
+A & function := id \\
+\hline
+B	&	i := 2 ; \\
+	&	param := pop; \\
+	&	while param $\neq$ \# do \\
+	&	\{	\\
+	&	\hspace{0.5cm}	ST [param, context ] := function ; \\
+	&	\hspace{0.5cm}	i := i +1 ; \\
+	&	\hspace{0.5cm}	param := pop \\
+	& 	\}	\\
+	&	ST [ function , \# params] := i - 2;  // Number of parameters  \\
+	& 	ST [next , name] := function.ret ; \\
+	&	next ++ ; 	\\
+	&	i := 2;    // offset to be kept   \\
+	&	n := function + function [ function \# params ] ; \\
+	&	for j := function + 1 to n do \\
+	&	\{ \\
+	&	\hspace{0.5cm}	ST [j, loc] := i; \\
+	&	\hspace{0.5cm}	i ++ ; \\
+	&	\} \\
+	&	ST [function , Loc ] := NQ; \\
+	\hline
+C	& 	push (function, ret).
+	&	return := active\_ar $\hat{ }$ .ar[1] ; \\
+	&	genquads ( pop, function, \_ , \_ ) & manage ar stack \\
+	&								& and if ar stack \\
+	&								& is empty assign zero  - active function \\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+push
+transfer args
+compare return address
+jump to quads to and from 
+
+
+
+\begin{itemize}
+\item Header for active  and activation record
+\item which function ST
+\end{itemize}
+
+Active 
+\begin{itemize}
+\item ST entry for the active function 
+\item Header to the AR stack 
+\begin{table}[htdp]
+%\caption{default} 
+\begin{center}
+\begin{tabular}{ll|l}
+A & genquad ( := , push (id) , \_ , active )  & active function , active ar (2 items)\\
+	&	n := st [id, \# of params ] ;	\\
+	&	i := 2	\\
+	&	for j := n downto i do \\
+	& \{ \\
+	& \hspace{05.cm} active\_ar$\hat{ } $ . ar[j] := pop ; \\
+	& \} \\
+	& empty := pop ; \\
+	& genquad (jmp, \_, \_ , st [id, loc] ) ; \\
+	& active ar $\hat{ } $ . ar[1] := NQ;  \\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\end{itemize}
+
+
+\begin{table}[htdp]
+%\caption{default}
+\begin{center}
+\begin{tabular}{|ll}
+if active.func = -1 then  \\
+\hspace {0.5cm} push (id) ;  \\
+else
+\hspace {0.5cm} push ( active\_ar [ST[id, loc] ) ; \\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+Concept of a ``Display'' is for nested procedures and functions.   
+
+
+procedure x
+
+	var a, b, c;
+	
+	procedure y
+		var d, a
+			y call itself
+	end;
+	y;
+end;
+
+\end{document}  
+
+

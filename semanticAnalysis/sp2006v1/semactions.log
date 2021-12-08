@@ -1,0 +1,399 @@
+This is pdfeTeXk, Version 3.141592-1.11a-2.1 (Web2C 7.5.2) (format=pdflatex 2005.12.7)  19 MAR 2006 23:38
+entering extended mode
+\write18 enabled.
+ %&-line parsing enabled.
+ (/usr/local/teTeX/share/texmf.tetex/web2c/cp8bit.tcx)
+**semactions.tex
+(./semactions.tex{/usr/local/teTeX/share/texmf.local/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count90
+))
+\Gin@req@height=\dimen107
+\Gin@req@width=\dimen108
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2001/02/04 v1.1 Conversion with epstopdf on the fly (HO)
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/listings/listings.sty
+\lst@mode=\count91
+\lst@gtempboxa=\box26
+\lst@token=\toks17
+\lst@length=\count92
+\lst@currlwidth=\dimen109
+\lst@column=\count93
+\lst@pos=\count94
+\lst@lostspace=\dimen110
+\lst@width=\dimen111
+\lst@newlines=\count95
+\lst@lineno=\count96
+\c@lstlisting=\count97
+\lst@maxwidth=\dimen112
+
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2004/10/17 1.3b (Carsten Heinz)
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2004/09/07 1.3 (Carsten Heinz)
+\c@lstnumber=\count98
+\lst@skipnumbers=\count99
+\lst@framebox=\box27
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/listings/listings.cfg
+File: listings.cfg 2004/09/05 1.3 listings configuration
+))
+Package: listings 2004/10/17 1.3b (Carsten Heinz)
+
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/algorithms/algorithm.sty
+Package: algorithm 
+
+Document Style `algorithm' - floating environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count100
+\float@exts=\toks18
+\float@box=\box28
+\@float@everytoks=\toks19
+\@floatcapt=\box29
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks20
+\c@algorithm=\count101
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2005/07/05
+
+Document Style `algorithmic' - environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/tools/calc.sty
+Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count102
+\calc@Bcount=\count103
+\calc@Adimen=\dimen113
+\calc@Bdimen=\dimen114
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 59.
+LaTeX Info: Redefining \addtolength on input line 60.
+\calc@denominator=\count104
+)
+\c@ALC@line=\count105
+\c@ALC@rem=\count106
+\c@ALC@depth=\count107
+\ALC@tlm=\skip45
+\algorithmicindent=\skip46
+)
+(./semactions.aux
+
+LaTeX Warning: Label `alg:B0' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `alg:W2' multiply defined.
+
+
+LaTeX Warning: Label `alg:lambda3' multiply defined.
+
+
+LaTeX Warning: Label `alg:lambda3' multiply defined.
+
+
+LaTeX Warning: Label `alg:lambda3' multiply defined.
+
+
+LaTeX Warning: Label `alg:lambda0' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `alg:andaction' multiply defined.
+
+
+LaTeX Warning: Label `alg:andaction' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+)
+\openout1 = `semactions.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+-------------------- Geometry parameters
+paper: letterpaper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 92.14519pt, 0.7\paperwidth , 92.14519pt (default)
+v-parts: 95.39737pt, 0.7\paperheight , 143.09605pt (default)
+hmarginratio: 1:1
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  430.00462pt
+\textheight 556.47656pt
+\oddsidemargin  19.8752pt
+\evensidemargin 19.8752pt
+\topmargin  -13.87262pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 59.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+ (/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count108
+\scratchcounter=\count109
+\scratchtoks=\toks21
+\scratchdimen=\dimen115
+\scratchskip=\skip47
+\scratchmuskip=\muskip10
+\scratchbox=\box30
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen116
+\minusone=\count110
+\thousandpoint=\dimen117
+\emptytoks=\toks22
+\nextbox=\box31
+\nextdepth=\dimen118
+\everyline=\toks23
+\!!counta=\count111
+\!!countb=\count112
+\recursecounter=\count113
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPtoPDFconversion=\toks24
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 18.
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 18.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+
+LaTeX Warning: Citation `ullmanCompiler' on page 1 undefined on input line 52.
+
+
+LaTeX Warning: Reference `copy8-2' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Citation `copy8-5' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Reference `copy8-5' on page 1 undefined on input line 58.
+
+
+LaTeX Warning: Reference `copy8-4' on page 1 undefined on input line 58.
+
+[1
+
+{/usr/local/teTeX/share/texmf.local/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
+
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
+
+
+LaTeX Warning: Citation `ullmanCompillers' on page 3 undefined on input line 12
+7.
+
+[3]
+
+LaTeX Warning: Citation `ullmanCompillers' on page 4 undefined on input line 13
+2.
+
+
+LaTeX Warning: Citation `ullmanCompilers' on page 4 undefined on input line 133
+.
+
+<declSemActA.png, id=32, 349.7868pt x 283.2984pt>
+File: declSemActA.png Graphic file (type png)
+ <use declSemActA.png>
+[4 <./declSemActA.png>] <declSemActB.pdf, id=39, 337.26pt x 609.27625pt>
+File: declSemActB.pdf Graphic file (type pdf)
+
+<use declSemActB.pdf> [5] [6 <./declSemActB.pdf>] [7] [8] [9] [10]
+<statementsA.pdf, id=192, 291.95251pt x 606.3629pt>
+File: statementsA.pdf Graphic file (type pdf)
+ <use statementsA.pdf>
+<statementWhenC.pdf, id=193, 283.53073pt x 160.01236pt>
+File: statementWhenC.pdf Graphic file (type pdf)
+
+<use statementWhenC.pdf>
+<statementWhenElse.pdf, id=194, 305.98872pt x 196.50636pt>
+File: statementWhenElse.pdf Graphic file (type pdf)
+
+<use statementWhenElse.pdf>
+<statementCarrotC.pdf, id=195, 311.60313pt x 176.8558pt>
+File: statementCarrotC.pdf Graphic file (type pdf)
+
+<use statementCarrotC.pdf>
+<statementCarrotE.pdf, id=196, 294.75967pt x 286.33807pt>
+File: statementCarrotE.pdf Graphic file (type pdf)
+
+<use statementCarrotE.pdf> [11] [12] [13 <./statementsA.pdf> <./statementWhenC.
+pdf>] [14 <./statementWhenElse.pdf> <./statementCarrotC.pdf> <./statementCarrot
+E.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
+
+ []
+
+<statementConditional.pdf, id=1679, 567.89668pt x 389.97795pt>
+File: statementConditional.pdf Graphic file (type pdf)
+
+<use statementConditional.pdf> [15] [16] [17 <./statementConditional.pdf>]
+[18] [19] (./semactions.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3082 strings out of 95314
+ 42347 string characters out of 1187311
+ 2089567 words of memory out of 4545060
+ 6121 multiletter control sequences out of 10000+50000
+ 11882 words of font info for 45 fonts, out of 1000000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 26i,8n,42p,535b,906s stack positions out of 5000i,500n,6000p,200000b,40000s
+ 1798 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 41 words of extra memory for PDF output out of 65536
+{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/09fbbfac.enc}</usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmtt10.pfb>{/usr/local/teTeX/share/t
+exmf.tetex/dvips/tetex/bbad153f.enc}</usr/local/teTeX/share/texmf.tetex/fonts/t
+ype1/bluesky/cm/cmsy8.pfb>{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/f7b6d
+320.enc}</usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr6.pfb>{/u
+sr/local/teTeX/share/texmf.tetex/dvips/tetex/aae443f0.enc}</usr/local/teTeX/sha
+re/texmf.tetex/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local/teTeX/share/texmf.t
+etex/fonts/type1/bluesky/cm/cmsl10.pfb></usr/local/teTeX/share/texmf.tetex/font
+s/type1/bluesky/cm/cmex10.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/b
+luesky/cm/cmr8.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/c
+mbx12.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy10.pfb
+></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmmi10.pfb></usr/lo
+cal/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmbx10.pfb></usr/local/teTeX
+/share/texmf.tetex/fonts/type1/bluesky/cm/cmr10.pfb></usr/local/teTeX/share/tex
+mf.tetex/fonts/type1/bluesky/cm/cmr12.pfb></usr/local/teTeX/share/texmf.tetex/f
+onts/type1/bluesky/cm/cmr17.pfb>
+Output written on semactions.pdf (19 pages, 4866639 bytes).

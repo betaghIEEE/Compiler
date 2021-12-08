@@ -1,0 +1,45 @@
+\chapter {Intermediate Code Gen - Semantic Actions }
+
+Two benefits of using intermediate - machine independent form:
+\begin{quote}
+\begin{enumerate}
+\item Retargeting is facilitated; a compiler for a different machine can be created by attaching a back end for the new machine to an existing front end. 
+\item A machine-independent  code optimizer can be applied to the intermediate representation.  
+\end{enumerate}
+ \end {quote} \cite{ullmanCompiler} page 463
+ 
+ Sections 5.2 and Chapter 8 of Ullman's book deal with semantic representation.  There is a concept of three-address code from common programming language constructs.  Question, is this the same as what Cooke is calling the quads?  
+ 
+ 
+ \begin{quote}
+ Three address code is a linearized representation of a syntax tree or a dag in which explicit names correspond to the interior nodes of the graph.  The syntax tree and dag in Figure \ref{copy8-2} are represented by the three-address code sequences  in Figure \cite{copy8-5}.  Variable names can appear directly in three-address statements, so Figure \ref{copy8-5} (a)  has no statements corresponding to the leaves in figure \ref{copy8-4}.  
+ \end{quote}
+ 
+ The term ``three address code'' is defined by three addresses (operand 1, operand 2, and the result field).  The other element is the operation code.  Typically an user defined name is replaced by a symbol table reference.   The operator is a type of Three-Address Statement.
+ 
+ \begin{enumerate}
+\item Assignment (copy)
+\item Unary operator
+\item Binary operator
+\item Unconditional jump
+\item procedural calls (branches) and their parameters
+\item indexed assignments
+\item Address or pointer assignments
+\end{enumerate}
+
+Page 408 contains syntax directed translation into Quads.
+
+Two basic attributes associated with either expression or statement statements to be encoded into quads are:
+\begin{enumerate}
+\item Place 
+\item Code
+\end{enumerate}
+ The place attribute places a name that will hold the value of the statement/ expression.  In Dr. Cooke's lingo, this is a gentemp command.    The code attribute generates a quad, or sequence of quads.  
+Statements have the additional attributes:
+\begin{itemize}
+\item \textbf{begin:}  Start flow control statements
+\item \textbf{after:}   End a previously generated flow control statement
+\end{itemize}
+Flow control generates labels which are reminscient of the labels in assembly.  
+
+

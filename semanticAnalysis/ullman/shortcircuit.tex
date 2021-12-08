@@ -1,0 +1,30 @@
+\begin{center}
+\begin{Large}
+\textbf{Flow of control statements}
+\end{Large}
+ \end{center}
+ Assumptions:
+\begin {itemize}
+\item There is a conditional / expression that is translated.
+\item Statements in the quad table have labels of some kind (quad address)
+\item There is an operation that provides a pointer to that label.  
+\end{itemize}
+
+In the quads table, meta-data exists for each production in the syntax.  Say each conditional has meta-data of for true and false attributes.  All statements have attributes of next and code.  
+
+\begin{lstlisting}
+@interface conditionalSemanticMetaData
+{
+	label true;
+	label false;
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+@interface statementSemanticMetaData
+{
+	label next;
+	label code;
+}
+\end{lstlisting}
+

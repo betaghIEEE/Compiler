@@ -1,0 +1,118 @@
+\begin{table}[htdp]
+\caption{Reserved Words by Start Character}
+\begin{center}
+\begin{tabular}{|l|l|}
+a	&	array, and \\
+e	&	else, eq	\\
+i	&	integer	\\
+m	&	 mod	\\
+n	&	neq, not	\\
+o	&	or
+p	&	prog	\\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+ 
+
+
+
+
+ \begin{table}[htdp]
+\caption{Tokenizer Regular Grammar}
+\begin{center}
+\begin{tabular}{|r|l|}
+$S_1 \to$	&	$(1|2)^*$ \\
+$S_2 \to$	&	$2^*$	\\
+$S_4 \to$	&	$5$		\\
+$S_5 \to $	&	$1S_1$ \\
+$\to$	&	$2S_2$	\\
+$\to$	&	$3$	\\
+$\to$	&	$4S_4$ \\
+$\to$	&	$5$ \\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+ \begin{table}[htdp]
+\caption{Tokenizer Symbology}
+\begin{center}
+\begin{tabular}{|l|l|}
+1	&	all ``A'' through ``Z'' and ``a'' through ``z'' \\
+2	&	0,..., 9 	\\
+3	&	$\{$ , \} , [ , ] , ;,  (, ) , +, -, $*$ , / \\
+	&	the comma itself ,  \\
+	&	$\hat{}$	\\
+4	&	:, $<$ , $>$	\\
+5	& 	the equal sign	\\
+6	& 	the space
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+\begin{table}[htdp]
+\caption{DFA Reduction for $S_5$}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+State		& 1	&	2&	3&	4&	5&	6 \\
+			& ABCEHIJMOQ	& 	-&	-&	-& 	-&	-\\
+ABCEHIJMOQ	& DGBHCEIJMOQ & FGBHCEIJMOQ&	NLT&	KLT& 	PLT&	RLT	\\
+DGBHCEIJMOQ		& DGBHCEIJMOQ	& FGBHCEIJMOQ&NLT& KLT&PLT&RLT \\
+FGBHCEIJMOQ		& DGBHCEIJMOQ	& FGBHCEIJMOQ&NLT& KLT&PLT&RLT \\
+NLT		& -	&	-&	-&	-&	-&	- \\
+KLT		& -	&	-&	-&	-&	-&	- \\
+PLT		& -	&	-&	-&	-&	-&	- \\
+RLT		& -	&	-&	-&	-&	-&	- \\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\begin{table}[htdp]
+\caption{Reduction of $S_1$}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+State	& 4	& 5	& 6	\\
+A	& BCEFGI	& -	& -	\\
+BCEFGI	& -	& DCEFGI	& HGI	\\
+DCEFGI	& -	& DCEFGI	& HGI	\\
+HGI	& -	& -	& HGI	\\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+Look at the grammar reference other grammars and determine if there is a missing construct regarding lexical analysis.  
+
+
+
+For an assignment statement there is:
+:= X * 4 20 
+
+:= X Y
+
+Read each line into 80 character string.  
+
+Print that line to a listing file.  
+
+Errors that can occur include lexical, syntax, or semantic errors.  
+
+Rules on identifiers:  Let no identifier be more than 10 characters long.   Identifiers must begin with a characters.  No special characters such as operators.    Length when an identifier is seen can be an error.  Error recovery or error repair.  Thou shall not do error repair.  Report errors well without spurious errors.  Descriptive enough to tell the user what he/she did wrong.   
+
+A space is a delimiter.    Ignore extra spaces.   In case of spaces, skip until the next character.  Read the next string token into a 10 character string.  The lexical analyzer has two tasks: find the next token and manage the symbol table.   
+
+Reserved words and operators constitutes special tokens.  In the symbol table, preload the reserved words and operators (symbols).    The symbol table does not need to be special.  The record type for this array should be:
+\begin{itemize}
+\item The string representation
+\item The token type (one for each reserved word, operator, identifier and constant type).  
+\item Entry number
+\item Memory location (filled in at code gen)
+\end{itemize}
+Global variables are ok in a compiler.    Next Token (NT) and token index (tIndex) are typical set by lexical analysis.  NT is the token acquired by the lexical analyzer and is used by syntax analysis.  The tIndex points to locations in the string (or block).  The symbol table should check to see if the symbol exists.  If it does not, then it adds the token to the list.  In either case, it returns the index.   A special token type exists for a identifiers.    Identifiers begin with a alphabetical characters.  Constants begin with numerical characters.    In our example, identifiers have token type 99 and constants have type 98.  

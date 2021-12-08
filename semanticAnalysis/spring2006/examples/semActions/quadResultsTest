@@ -1,0 +1,21 @@
+jmp
+:= x[i] 0 max
+:= c2 0 i
+jmp
+jmp	0	0	8
+:= x[i] 0 max
+jmp
+< max x[i] t1
+jtrue t1 0 6
++ 1 i t2
+:= t 0 i
+jmp	0	0	14
+jmp 0	0	15
+jmp 0	0	16
+:=	c9	c1	c9
+:= c9 0	t3
+jtrue t3	0	13
+
+The issue is in endCarrotExpression (K).  
+The jump conditions must deal with constants 
+proper variables.

@@ -1,0 +1,624 @@
+Semantic Actions are embedded with the syntax analysis functions capturing the semantics of the program.. As syntax is being analyzed, a semantic representation of the program is produced.    There is such a thing as a quad table, and this table captures the meaning of the program in a concise way. 
+
+A quad table is a two dimensional table containing integers.  The references are to the symbol table,   References to quads which will be the row subscript for the quad in the quad table which may be any branch (loops or conditional branches).  
+
+Quad operations may be represented by 4 columns (operation, operand 1 and 2, and the result).  The operands, and results may be references to the symbol table or the quad table.   The operations must include Turing complete operations.  The operations are obviously referenced by integers, and a mapping must exist.  The Turing operaitons may be
+\begin{table}[htdp]
+\caption{Turing Operations that make up a Quad Table}
+\begin{center}
+\begin{tabular}{|c|c|}
++ 	& 1 \\
+-	& 2 \\
+*	& 3 \\
+/	& 4 \\
+< 	& 5 \\
+> 	& 6  \\
+>=	& 7	\\
+<= 	& 8 	\\
+read	&	9	\\
+write	&	10	\\
+readln	&	11 \\
+writeln	&	12 \\
+eq		&	13	\\
+neq		&	14	\\
+jmp		& 	15	\\
+jmp-true	&	16	\\
+jmp-false	&	17	\\
+assign (:=)	&	18	\\
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+State is an interesting issue for program.
+
+Subscripts must also must be taken into consideration for any semantic analysis.  Typically, these are subscripts into an array, and are simply pointers.  However, the memory handling issue is most crucial, and can not be done wrong.
+
+\begin{lstlisting}
+ read(n);
+ f := 1;
+ for i := 2 to n do 
+ 	f := f* i ;
+write (f);
+\end{lstlisting}
+Most current languages have semantics that say the loop is tested first.  Thus the loop is not entered if the test condition is not met.  There is also a need to produce temporary variables as necessary for the program.  These could exist as actual memory, or registers.  However, the quad table is system independent and there for temps are abstract.  Also temporary marks for location, and memory location.  A semantic action needs to exist that handle fill in operations for the quad table, called a semantic action stack.   (Note quad operations are not part of the symbol table).  However, those values need to be constant, and maintained in an array somewhere.  
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l| }
+Index & 	Operation	& Operand 1	& Operand 2	& Results \\
+1	&	rd		&	&	& n	\\
+2	& 	:=		& 1	&	& f 	\\
+3	& 	:=		&	&	& i	\\
+4	&	<= 		& i 	& n	& $t_1$	\\
+5	&	jfalse	& $t_1$	&	&	unk -> 10	\\
+6	&	*		&	f	& i	&	$t_2$ \\
+7	&	:= 		& $t_2$	& 	&	f	\\
+8	& 	+		& i 		& 1	& i	\\
+9	&	jump		&		&	& 4 \\
+10 	&	write		& f		&	&	
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+Operations 6 and 7, could have been (* f i f ), and would be a optimization that can be applied after semantic analysis.   In operation 8, is an optimization that is similar to i++ in C.    The fill in of 10 is the result of the semantic action stack (SAS) being popped.    Keeping references in operand 1 and definitions in the result field, then high payoff optimizations can be applied.  
+
+Recall a grammar:
+\begin{eqnarray*}
+E \to TE' \\
+E' \to + TE' \\
+\to \epsilon \\
+T \to F T'  \\
+T' \to * FT' \\
+\to \epsilon \\
+F \to (E) \\
+\to id   \\
+S \to id := E
+\end{eqnarray*}
+
+When an identifier is discovered, then the identifier is placed on to the SAS (the index of the symbol table location of identifier).   This provides information for use in semantic analysis.
+
+Take semantic actions 
+
+Semantic Action A:
+a := pop
+b := pop
+c := gentemp 
+gen_quad (t,b,a,c)
+push (c)
+
+Semantic Action B
+a := pop
+b := pop
+c := gentemp
+gen_quad (*,b,a,c)
+push (c) 
+
+Semantic Action C
+push (id)
+
+Semantic Action D
+a := pop
+b := pop
+gen_quad ( := , a, _ , b )
+
+
+Try x := a * b + c
+x := a * ( b +c ) 
+
+
+Parsing of the above sentences.  
+
+
+
+Watch for matching push and pops.   Statements and expressions are different in this regard.  
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{SAS Table}
+\begin{tabular}{|c|c|}
+SAS	& Next Token	\\
+X	&	X	\\
+a	&	:=	\\
+	&	b	\\
+	&	a	\\
+	& 	*	\\
+\end{tabular}
+\end{center}
+\label{SAS}
+\end{table}%
+
+\begin{table}[htdp]
+\caption{Memory Table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\textbf{a}	&	\textbf{b}	& \textbf{c}	\\
+b	&	a	&	$t_1$\\
+c	&	$t_1$	& 	$t_2$ \\
+$t_2$	&		&		\\
+\end{tabular}
+\end{center}
+\label{Memory}
+\end{table}%
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\textbf{Operation}	&	\textbf{Operand 1}	& \textbf{ Op 2} & \textbf{Result}	\\
+*	& $t_1$	&	0	& $t_2$	\\
++ 	& $t_1$ 	& c	& $t_2$ 
+\end{tabular}
+\end{center}
+\label{Quad}
+\end{table}%
+
+
+
+
+
+
+
+
+
+When the semantic actions as far as we are concerned, individual statements has an empty stack.  
+
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{SAS Table}
+\begin{tabular}{|c|c|}
+SAS &	NT	\\
+x	&	a	\\
+a	&	*	\\
+b	&	b 	\\
+$t_1$	&	+ 	\\
+c	&	c \\
+$t_2$	&	
+\end{tabular}
+\end{center}
+\label{SAS}
+\end{table}%
+
+\begin{table}[htdp]
+\caption{Memory Table}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\textbf{a}	&	\textbf{b}	& \textbf{c}	\\
+b	&	a	&	$t_1$\\
+c	&	$t_1$	& 	$t_2$ \\
+$t_2$	&		&		\\
+\end{tabular}
+\end{center}
+\label{Memory}
+\end{table}%
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\textbf{Operation}	&	\textbf{Operand 1}	& \textbf{ Op 2} & \textbf{Result}	\\
+*	& $t_1$	&	0	& $t_2$	\\
++ 	& $t_1$ 	& c	& $t_2$ 
+\end{tabular}
+\end{center}
+\label{Quad}
+\end{table}%
+
+Another production:
+\[ S \to ... | \textsl{ if } C \textsl{ then } $S_1$ \textsl{ else } S_2 \textsl{ endif}\]
+
+There is an assumption that is applied to semantic actions.  There is a NQ, some boolean at the top of the SAS left by c (or something),  
+
+Say that NQ is 10.  The jump false on the temp variable at the top of the SAS.    Also, the next quad needs to be on the SAS so that the jump has some place to modify.  
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+index & op	&	op1 		&	op2 &	result \\
+10	& jfalse	&	$t_4$	&	\_	&	\_ 31	\\
+...	&	$S_1$	&			&		&		\\
+30	&		&			&		&		\\
+31	&		&			&		&		\\
+...	&  $S_2$	&			&		&		\\
+50	& 
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+C:= pop
+push (NQ) 
+genquad (jfalse, C, _ , _ }
+
+To provide the proper use of the loop, then position of the quads must be used properly.
+
+A := pop(jfalse)
+push (NQ)
+genquad (jmp,  _ , _ , _ )
+QUADS [A, 3] := NQ
+
+A := pop
+QUADS [A, 3] := NQ
+
+Type checking is a semantic action that can be applied to ensure that types are not misused.  
+
+\[
+\textsl{while }
+C \textsl{ do } 
+S
+\textsl { od }
+\]
+
+push (NQ)  (condition)
+
+C := pop
+push (NQ)
+genquad (jfalse, C, _ , _ ) 
+
+
+A := pop   // jfalse
+C := pop 	// condition
+genquad ( jump, _ , C, _ ) 
+QUADS [A, 3] := NQ
+
+
+To Do:
+\[
+\textsl{while } C_1 \textsl{ do }
+	\textsl{while } C_2 \textsl{ do } S_1 \textsl{ od }
+\textsl{ od }  
+\]
+
+\[
+S \to \textsl{ for } i_d := E \textsl{ to } E \textsl{ do } S \textsl { od  }
+\]
+
+
+Limiting the degree of freedom is not a bad thing if it causes good code to be generated .  
+
+
+\begin{eqnarray*}
+P \to \textsl{prog } ( I_D) D_1 \{ S \} - > (I_D) \\
+D_1 \to I_L : D  \\
+\to \epsilon \\
+D \to array [ cons D_2 ] ; D_1  \\
+\to integer ; D_1 \\
+D_2  \to , cons D2 
+	\to \epsilon \\
+I_L \to id I_{L_1}   \\
+I_{L_1}  \to , I_{L}  \\
+	\to \epsilon \\
+\end{eqnarray*}
+The $I_D$ has to be declared in the $D_1$ production.  Otherwise it is a semantic error.    Example
+\begin{lstlisting}
+x,y,z : integer 
+\end {lstlisting}  
+
+There is an index of symbol table is what is used in syntax, semantic and code analysis.  However, lexical analysis is what needs the actual name itself.    The token type is used by the syntax analysis.  It is not necessary in semantic or code gen.    Use the abbreviations NT for next token and ST for symbol table index.     
+
+Other pieces in the symbol table are necessary to handle symantic analysis and code gen.   Type information, row and column information is include (2 dimensional ) array(s).     The memory element will necessary for code gen.    The gentemp generates a variable to the symbol table, and its memory location may or not exist for code gen.  However, these still have to be taken into account in semantic actions.  
+
+Identifier lists have a semantic action the acquistion of the identifier.     Place a mark in sem action B to place a marker in the SAS.   It will be the pop stopper.    Sem action C needs to have a while loop popping the SAS to place in symbol table identifiers type into the symbol.   This type can be int or array types.  
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+index &	name &	tokenType & Type & row & column & memory \\
+... \\
+45	&	X	&	99	& int/array	& 	\\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+Sem Action C:
+a := pop
+while a <> -1 do 
+{
+	SyT.type := int;
+	a := pop
+}
+
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+index &	name &	tokenType & Type & row & column & memory \\
+... &	&	&	&	&	&	\\
+45	&	X	&	99	& int/array	& 3	& 2	&	\\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+Try a row order memory arrangement.  Then the memory table would look like:
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|}
+Value	& Index	\\
+10	&	0	\\
+80 	& 	1	\\
+13 	&	 2	\\
+40	&	3	\\
+2	&	4	\\
+5	&	5	
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\\
+Given operations $\to $ Value  \\
+Quad Operand $\to$ Base \\
+
+x[i] := 5
+y:= x[i]  
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+op	&	arg 1	& arg2	& result	\\
+:= &	base	&	X	&	$t_1$ \\
++ &	$t_1$ & i $ t_2$ \\
+:= & 5	&	& @ $t_2$ 
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+Word size matters for optimizations.       
+
+For storing values like 5, indirect addressing is required for intermediate code and code gen.  A special field may be necessary for the symbol table to handle indirect addressing.    
+
+
+x[i,j] 
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+op	&	arg 1	& arg2	& result	\\
+:= &	base	&	X	&	$t_1$ \\
+* &	st.col & i $ t_2$ \\
++	& 	$t_1$ & $t_2 $ & $t_3$ \\
++  	& $t_3$ & j 	&	$t_4 $ \\
+
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+$t_4$ is the offset to the memory location in $x$.   The @ symbol can be used in our notation for offset.  Note this is done since the quad table does not deal with actual memory.  
+
+\[
+E \to + E E | * E E | \textsl{ id } | \textsl{ cons }
+\]
+
+
+x := 
+
+
+\section { Notes on Sem Actions and Factor}
+given an array addressing:
+\[
+x[i,j]  \to \textsl{ integer, array } - \textsl{ factor } \leftarrow 4 
+\]
+Does this belong in the Symbol Table?  No on the basis that it is constant.  However, it is not known per symbol then it may belong there.  
+
+\begin{lstlisting }
+for i := 1 to n do
+	for j:= 1 to n do 
+		x[i, j] := y [i, j] ;
+\end{lstlisting}
+
+If this is added to the quad table,
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+1	& 	:= 	&base 		&	x		& $t_1$ \\
+2	&*		& 	i		& ST[x]-> col 	&	$t_2$ 	\\
+3	&	*	& $t_2$		& factor 	& $t_3$	\\
+4	&	*	& j			& factor 	& $t_4$	\\
+5	& +		&$t_3$		& $t_4$	& $t_5$	\\
+6	& +		&$t_1$		& $t_5$	& $t_6$	\\
+7	& :=		& base		& y	& $t_7$	\\
+8	&	*	& $t_8$		& factor 	& $t_9$	\\
+9	&	*	& j			& factor 	& $t_{10}$	\\
+10	&	+ 	& $t_9$		& $t_{10}$ 	& factor 	\\
+11	&	+  	& $t_7$ 		& $t_{11} &	$t_{12}$ \\
+12 	&  :=	&	offset $t_12 $ 	& 		& offset $t_{13}$ 
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+1	&:=		&0	&	&	i \\
+2	$<=$	&i		&n	& $t_{13}$ \\
+3	&jfalse	&		& & $t_{13}$	\\
+
+4	& :=		&0	&&		j \\
+5	& $<=$		&j		&m	& $t_{14}$  \\
+6	& jfalse	& $t_{14}$ 	&	&		22			\\
+7	& 	:= 	&base 		&	x		& $t_1$ \\
+8	&*		& 	i		& ST[x]-> col 	&	$t_2$ 	\\
+9	&	*	& $t_2$		& factor 	& $t_3$	\\
+10	&	*	& j			& factor 	& $t_4$	\\
+11	& +		&$t_3$		& $t_4$	& $t_5$	\\
+12	& +		&$t_1$		& $t_5$	& $t_6$	\\
+13	& :=		& base		& y	& $t_7$	\\
+14	&	*	& $t_8$		& factor 	& $t_9$	\\
+15	&	*	& j			& factor 	& $t_{10}$	\\
+16	&	+ 	& $t_9$		& $t_{10}$ 	& factor 	\\
+17	&	+  	& $t_7$ 		& $t_{11}$ &	$t_{12}$ \\
+18 	&  :=	&	offset $t_12 $ 	& 		& offset $t_{6}$  \\
+19	&	+	&	j	&	1	&	j \\
+20	&	jump	&		&		&    5 \\
+21	&	+	&	i	&	1	&	i \\
+22	&	jump	&		&		&    2 \\
+\\\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+\begin{enumerate}
+\item Indirect variable analysis
+\item Similar operations that have non-dependent variables can be moved. 
+\item Checks inside the symbol Table for values that can be collapsed
+\item One optimization in  code gen and IM code gen is invariant code movement.
+\item Array offsets and factors can be moved outside loops.  
+\end{enumerate}
+
+
+
+There is a concept of true chains and false chains that link one quad to another.    Backpatching is another concept (chapter 8 of Ullman).    Review this solidly over for Thursday.
+
+Operations needed are:
+\begin{enumerate}
+\item BP
+\item merge
+\end{enumerate}
+
+
+Code gen comes after spring break.    April should finish the code gen.  Table based parsing comes in April.  
+
+
+\section {Example Semantics from the Project:}
+Evaluation semantics:  $<$, $>$, $\le$, $\ge$, eq, neq, $+$ , $-$, $*$, $\div$, and mod  all have similar semantics:
+
+\[ E \to \nu E_1 E_2 \]
+\[ C \to \nu E_1 E_2 \]
+
+\begin {algorithm}
+\caption{ Semantic action $G_0$ }
+\label{alg:G0}
+\begin{algorithmic}
+\STATE \texttt { a := POP (SAS) }  Results of $E_1$
+\STATE \texttt { b := POP (SAS) }  Results of $E_2$
+\STATE \texttt { c := gentemp }  
+\STATE \texttt { genquad ( $\nu$, b, a, c) }
+
+\end{algorithmic}
+\end{algorithm}
+
+Statement semantics include some boolean and numeric evaluations as well as boolean expressions.   
+
+\begin {algorithm}
+\caption{ Semantic action $\lambda$ and $\gamma$ }
+\label{alg:lambda0}
+\begin{algorithmic}
+\STATE \texttt {PUSH NQ}
+\STATE \texttt {genquad (jmp, , , ) }
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\mu$ }
+\label{alg:lambda2}
+\begin{algorithmic}
+\STATE \texttt { a := POP (SAS) }  conditional result
+\STATE \texttt { b := POP (SAS) }  end of the statement
+\STATE \texttt { c := POP (SAS) }  beginning of the statement (at the jump)
+\STATE \texttt { genquad ( jtrue, a, , c + 1) }
+\STATE \texttt { QUADS [c,4] := b+ 1 }
+\STATE \texttt { QUADS [b,4] := NQ }
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\eta$ }
+\label{alg:lambda3}
+\begin{algorithmic}
+\STATE \texttt { a := POP (SAS) }  conditional result
+\STATE \texttt { b := POP (SAS) }  end of the statement
+\STATE \texttt { c := POP (SAS) }  beginning of the statement (at the jump)
+\STATE \texttt { genquad ( jtrue, a, , c + 1) }
+\STATE \texttt { QUADS [c,4] := b+ 1 }
+\STATE \texttt { PUSH b}
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\chi$ }
+\label{alg:lambda3}
+\begin{algorithmic}
+\STATE \texttt { b :=  POP }
+\STATE \texttt { QUADS [b,4] := NQ }
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\iota$ }
+\label{alg:lambda3}
+\begin{algorithmic}
+\STATE \texttt { c := POP } Results of Conditional
+\STATE \texttt { b := POP } Jump coordinates after statement
+\STATE \texttt { a := POP } Jump coordinates before statement
+\STATE \texttt { QUADS [a,4] := b + 1 }
+\STATE \texttt { QUADS [b,4] := b + 1 }
+\STATE \texttt { genquad (jtrue, c, , a + 1 )  }
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\kappa$ }
+\label{alg:lambda3}
+\begin{algorithmic}
+\STATE \texttt { c := POP } Results of Expression
+\STATE \texttt { b := POP } Jump coordinates after statement
+\STATE \texttt { a := POP } Jump coordinates before statement
+\STATE \texttt { genquad ( jmp, , , a + 1 ) }   Jump to the statement
+\STATE \texttt { d := NQ }  Location of the test
+\STATE \texttt { genquad ( - , c, 1, c ) }   decrement the count
+\STATE \texttt { e := gentemp }
+\STATE \texttt { genquad ( $\le$, c , 0, e ) } 
+\STATE \texttt { genquad (jtrue, e, , a + 1 )  }
+\STATE \texttt { QUADS [a,4] := b + 1 }
+\STATE \texttt { QUADS [b,4] := d  }
+\end{algorithmic}
+\end{algorithm}
+
+\begin {algorithm}
+\caption{ Semantic action $\beta$ }
+\label{alg:lambda0}
+\begin{algorithmic}
+\STATE \texttt {b := pop}
+\STATE \texttt {a := id }
+\STATE \texttt {genquad (:= , b, , a ) }
+\end{algorithmic}
+\end{algorithm}
+
+
+if A and B or C then S1
+
+
+\begin{table}[htdp]
+\caption{default}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+SAS	&	
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+

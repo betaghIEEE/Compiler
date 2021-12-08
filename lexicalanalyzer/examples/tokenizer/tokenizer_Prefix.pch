@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'tokenizer' target in the 'tokenizer' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

@@ -1,0 +1,207 @@
+This is pdfeTeXk, Version 3.141592-1.11b-2.1 (Web2C 7.5.2) (format=pdflatex 2004.9.15)  29 NOV 2004 11:17
+entering extended mode
+\write18 enabled.
+ %&-line parsing enabled.
+ (/usr/local/teTeX/share/texmf.tetex/web2c/cp8bit.tcx)
+**semactions.tex
+(./semactions.tex{/usr/local/teTeX/share/texmf.local/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2001/02/04 v1.1 Conversion with epstopdf on the fly (HO)
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/macros/contrib/supported/algorith
+ms/algorithm.sty
+Package: algorithm 
+
+Document Style `algorithm' - floating environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/misc/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks16
+\float@box=\box26
+\@float@everytoks=\toks17
+\@floatcapt=\box27
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks18
+\c@algorithm=\count89
+)
+(/usr/local/teTeX/share/texmf.gwtex/tex/latex/macros/contrib/supported/algorith
+ms/algorithmic.sty
+Package: algorithmic 
+
+Document Style `algorithmic' - environment
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/tools/calc.sty
+Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count90
+\calc@Bcount=\count91
+\calc@Adimen=\dimen105
+\calc@Bdimen=\dimen106
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 59.
+LaTeX Info: Redefining \addtolength on input line 60.
+\calc@denominator=\count92
+)
+\c@ALC@line=\count93
+\c@ALC@rem=\count94
+\ALC@tlm=\skip45
+)
+\c@theorem=\count95
+\c@definition=\count96
+
+(./semactions.aux
+
+LaTeX Warning: Label `alg:G2' multiply defined.
+
+)
+\openout1 = `semactions.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+ (/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf.tetex/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count97
+\scratchcounter=\count98
+\scratchtoks=\toks19
+\scratchdimen=\dimen107
+\scratchskip=\skip46
+\scratchmuskip=\muskip10
+\scratchbox=\box28
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen108
+\minusone=\count99
+\thousandpoint=\dimen109
+\emptytoks=\toks20
+\nextbox=\box29
+\nextdepth=\dimen110
+\everyline=\toks21
+\!!counta=\count100
+\!!countb=\count101
+\recursecounter=\count102
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPtoPDFconversion=\toks22
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+{/usr/local/teTeX/share/texmf.local/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 168.
+
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 168.
+ [3] [4] [5]
+[6] [7] [8] [9] [10] [11] [12] [13] [14] (./semactions.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1537 strings out of 95314
+ 19219 string characters out of 1187311
+ 67085 words of memory out of 1516578
+ 4604 multiletter control sequences out of 10000+50000
+ 11529 words of font info for 44 fonts, out of 1000000 for 2000
+ 14 hyphenation exceptions out of 1000
+ 25i,6n,24p,705b,308s stack positions out of 5000i,500n,6000p,200000b,40000s
+ 81 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 1 words of extra memory for PDF output out of 65536
+{/usr/local/teTeX/share/texmf.tetex/dvips/tetex/09fbbfac.enc}</usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmtt10.pfb>{/usr/local/teTeX/share/t
+exmf.tetex/dvips/tetex/f7b6d320.enc}</usr/local/teTeX/share/texmf.tetex/fonts/t
+ype1/bluesky/cm/cmr6.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesk
+y/cm/cmbx10.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr8
+.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmbx12.pfb>{/us
+r/local/teTeX/share/texmf.tetex/dvips/tetex/aae443f0.enc}</usr/local/teTeX/shar
+e/texmf.tetex/fonts/type1/bluesky/cm/cmmi8.pfb>{/usr/local/teTeX/share/texmf.te
+tex/dvips/tetex/bbad153f.enc}</usr/local/teTeX/share/texmf.tetex/fonts/type1/bl
+uesky/cm/cmsy8.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/c
+msy10.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmmi10.pfb
+></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr10.pfb></usr/loc
+al/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr12.pfb></usr/local/teTeX/s
+hare/texmf.tetex/fonts/type1/bluesky/cm/cmr17.pfb>
+Output written on semactions.pdf (14 pages, 112563 bytes).

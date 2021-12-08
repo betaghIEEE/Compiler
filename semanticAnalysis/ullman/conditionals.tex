@@ -1,0 +1,83 @@
+It should be noted that procedural and logic programming have two separate concepts of the boolean or logic expressions in programming.     In procedural, the concept of logic is for controlling the flow of the program.  Although a procedural program can evaluate a set of boolean expressions to either true or false, and hence be used to evaluate a complex expression, it is not the same as a answer set or other resolution type concepts.    
+
+This section examines the procedural component of logic evaluations.  Another section in the context of logic oriented semantics handles answer set semantics and reviews existing papers on the subject.  
+
+
+\subsection {Methods of Translating Boolean Expressions} 
+
+\begin{enumerate}
+\item Principle means of encoding boolean expressions
+\begin{enumerate}
+\item Represent the states of boolean expressions numerically \\
+\begin{enumerate}
+\item Operations become a form of boolean mathematics which inherent to the intermediate machine.  
+\item The logical operators $\wedge$, $\vee$ and $\neg$ (and, or, and not) can be represented by branching statements.  
+\item The logical operators can also be represented as actual quad operations.  
+\end{enumerate}
+
+\item   Flow control representation:  The method identify the boolean state by position in the program.  
+\end{enumerate}
+\item Optimizations in the flow control and numerical evaluation can be made in cases where by the outcome is determined with out evaluating the full condition.  
+\end{enumerate}
+
+\subsection {Flow Control Statements}  
+The three basic procedural control constructs:
+\begin{enumerate}
+\item if - then
+\item if - then - else
+\item while - do
+\end{enumerate}
+In each of these cases, there is a conditional production part of these flow control statements which is evaluated true or false, and any branching can be based those two conditions.  
+
+\subsection{Mixed-Mode Boolean Expresion}
+
+A semantic to be considered in procedural programming is 
+\[  ( a < b) + (b < a) \]  
+In this case, it is an arithmetic expression.    Not all procedural syntax allows this sort of mixing.   
+\begin{enumerate}
+\item Conditionals are special types of expressions.
+\item The case of mixed expressions forces conditional expressions include type information.   Reference Figure 8.25.  
+\end{enumerate}
+
+
+\section {Case Statements}
+\begin{quote}
+There is a selector expression which is to evaluated, followed by $n$ constant values that the expression might take, perhaps including a default ``value,'' which always matches the expression if no other value does.  The intended translation of a switch is code to:
+\begin{enumerate}
+\item Evaluate the expression.
+\item Find which value in the list of cases is the same as the value of the expression.  Recall that the default value matches the expression if non of the values explicitly mentioned in case does.  
+\item Execute the statement associated with the value found.   
+\end{enumerate}
+\end{quote}
+
+Two methods exist for implementing such a construct.  One is to use a series of branch statements.  The other is to use a lookup table consisting of pairs (value and code location pairs).    This becomes a symbol table problem for efficiency.  
+
+Reference Figures 8.27 and 8.28  .  
+
+\begin{quote}
+We process each statement \textbf{case} $V_1$: $S_i$ by emitting the newly created created label $L_i$, followed by the code for $S_i$, followed by the jump \textsl{goto next}.  Then when when the keyword \textbf{end} terminating the body of the switch is found, we are ready to generate the code for the n-way branch.  Reading the pointer-value pairs on the case stack from the bottom to the top, we can generate a sequence of three-address statements of the form.
+\begin{lstlisting}
+case V1, L1
+case V2 L2
+...
+case Vn Ln-1
+case t  Ln
+label next
+\end{lstlisting}
+\end{quote}
+
+
+\section {Backpatching}
+\begin {quote}
+The main problem with generating code for boolean expressions and flow-of-control statements in a single pass is that during one single pass we may not know the labels that control must go to at the time jump statements are generated.  
+\end{quote}
+
+\begin{quote}
+Labels will be indices into this array.  To manipulate lists of labels, we use three functions:
+\begin{enumerate}
+\item Makelist (i)
+\item Merge  (p1, p2) 
+\item backpatch (p,i)
+\end{enumerate}
+
+\end{quote}
